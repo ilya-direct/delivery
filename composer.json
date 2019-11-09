@@ -2,9 +2,9 @@
     "name": "ilya/delivery",
     "description": "For technopark",
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "psr-4": {
+            "Delivery\\": "src/"
+        }
     },
     "authors": [
         {
