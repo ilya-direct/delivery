@@ -1,0 +1,15 @@
+{
+    "name": "ilya/delivery",
+    "description": "For technopark",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Ilya D",
+            "email": "ilya-direct@ya.ru"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/latest/phpunit.xsd"
+        bootstrap="./vendor/autoload.php"
+        backupGlobals="true"
+        timeoutForLargeTests="61">
+    <testsuites>
+        <testsuite name="Мой набор тестов">
+            <directory>tests</directory>
+        </testsuite>
+   </testsuites>
+</phpunit>
