@@ -7,29 +7,20 @@ namespace Delivery;
 use Delivery\Companies\Bird\Bird;
 use Delivery\Exceptions\CalculationException;
 use Delivery\Exceptions\CompanyNotFoundException;
-use Delivery\Exceptions\ConfigException;
 use Delivery\Companies\Turtle\Turtle;
 
 class Service
 {
-    /** @var IDeliveryCompany[] */
-    private $deliveryCompanies;
+    /** @var CompaniesDI*/
+    private $di;
 
     /**
      * Service constructor.
-     * @param array $dc
-     * @throws ConfigException
+     * @param CompaniesDI $di
      */
-    public function __construct(array $dc)
+    public function __construct(CompaniesDI $di)
     {
-        foreach ($this->availableCompanies() as $name) {
-
-            if (!array_key_exists($name, $dc)) {
-                throw new ConfigException('DeliveryCompany ' . $name . ' not exist');
-            }
-
-            $this->deliveryCompanies[$name] = $dc[$name];
-        }
+        $this->di = $di;
     }
 
     /**
@@ -46,7 +37,11 @@ class Service
         // TODO: check items empty
         // TODO: check addressA, addressB
 
-        $company = $this->companyByName($companyName);
+        if (!in_array($companyName, $this->availableCompanies())) {
+            throw new CompanyNotFoundException();
+        }
+
+        $company = $this->di->get($companyName);
 
         $deliveryInfo = $company->getDeliveryInfo($addressA, $addressB, $items);
 
@@ -66,7 +61,8 @@ class Service
         // TODO: check addressA, addressB
 
         $result = [];
-        foreach ($this->deliveryCompanies as $company) {
+        foreach ($this->availableCompanies() as $companyName) {
+            $company = $this->di->get($companyName);
             try {
                 $info = $company->getDeliveryInfo($addressA, $addressB, $items);
             } catch (CalculationException $e) {
@@ -85,19 +81,5 @@ class Service
             Bird::NAME,
             Turtle::NAME,
         ];
-    }
-
-    /**
-     * @param string $name
-     * @return IDeliveryCompany
-     * @throws CompanyNotFoundException
-     */
-    private function companyByName(string $name): IDeliveryCompany
-    {
-        if (!in_array($name, $this->availableCompanies())) {
-            throw new CompanyNotFoundException();
-        }
-
-        return $this->deliveryCompanies[$name];
     }
 }

@@ -10,13 +10,17 @@ require __DIR__ . '/mocks/TurtleRepository.php';
 require __DIR__ . '/mocks/Item.php';
 
 
-$birdCompany = new Bird(new  BirdInteractor());
-$turtleCompany = new Turtle(new TurtleRepository(), new  TurtleInteractor());
+//$birdCompany = new Bird(new  BirdInteractor());
+//$turtleCompany = new Turtle(new TurtleRepository(), new  TurtleInteractor());
 
 
-$service = new Service([
-    Bird::NAME => $birdCompany,
-    Turtle::NAME => $turtleCompany,
-]);
+$service = new Service(new Delivery\CompaniesDI([
+    Bird::NAME => function () {
+        return new Bird(new  BirdInteractor());
+    },
+    Turtle::NAME => function () {
+        return new Turtle(new TurtleRepository(), new  TurtleInteractor());
+    },
+]));
 
 return $service;

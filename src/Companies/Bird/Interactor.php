@@ -3,7 +3,6 @@
 
 namespace Delivery\Companies\Bird;
 
-use Delivery\Item;
 use Delivery\ItemInterface;
 
 interface Interactor
