@@ -2,7 +2,6 @@
 
 use Delivery\Companies\Bird\Bird;
 use Delivery\Companies\Turtle\Turtle;
-use Delivery\Item;
 use Delivery\Exceptions\CalculationException;
 use Delivery\Exceptions\CompanyNotFoundException;
 

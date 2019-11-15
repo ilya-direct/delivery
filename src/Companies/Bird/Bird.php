@@ -7,7 +7,7 @@ namespace Delivery\Companies\Bird;
 use Delivery\IDeliveryCompany;
 use Delivery\DeliveryInfo;
 use Delivery\Exceptions\CalculationException;
-use Delivery\Item;
+use Delivery\ItemInterface;
 
 class Bird implements IDeliveryCompany
 {
@@ -28,7 +28,7 @@ class Bird implements IDeliveryCompany
     /**
      * @param string $addressA
      * @param string $addressB
-     * @param Item[] $items
+     * @param ItemInterface[] $items
      * @return DeliveryInfo
      * @throws CalculationException
      */

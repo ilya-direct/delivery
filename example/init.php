@@ -7,6 +7,7 @@ use Delivery\Service as Service;
 require __DIR__ . '/mocks/BirdInteractor.php';
 require __DIR__ . '/mocks/TurtleInteractor.php';
 require __DIR__ . '/mocks/TurtleRepository.php';
+require __DIR__ . '/mocks/Item.php';
 
 
 $birdCompany = new Bird(new  BirdInteractor());

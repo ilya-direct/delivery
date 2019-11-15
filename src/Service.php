@@ -35,14 +35,14 @@ class Service
     /**
      * @param string $addressA
      * @param string $addressB
-     * @param Item[] $items
+     * @param ItemInterface[] $items
      * @param string $companyName
      * @return DeliveryInfo
      * @throws CompanyNotFoundException|CalculationException
      */
     public function priceByCompany(string $addressA, string $addressB, array $items, string $companyName): DeliveryInfo
     {
-        // TODO: check items instance of Item
+        // TODO: check items instance of ItemInterface
         // TODO: check items empty
         // TODO: check addressA, addressB
 
@@ -56,12 +56,12 @@ class Service
     /**
      * @param string $addressA
      * @param string $addressB
-     * @param Item[] $items
+     * @param ItemInterface[] $items
      * @return DeliveryInfo[] (companyName => DeliveryInfo)
      */
     public function allPrices(string $addressA, string $addressB, array $items): array
     {
-        // TODO: check items instance of Item
+        // TODO: check items instance of ItemInterface
         // TODO: check items empty
         // TODO: check addressA, addressB
 

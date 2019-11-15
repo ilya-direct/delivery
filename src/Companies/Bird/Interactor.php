@@ -4,13 +4,14 @@
 namespace Delivery\Companies\Bird;
 
 use Delivery\Item;
+use Delivery\ItemInterface;
 
 interface Interactor
 {
     /**
      * @param string $addressA
      * @param string $addressB
-     * @param Item[] $items
+     * @param ItemInterface[] $items
      * @return Response
      *
      * @throws InteractorException

@@ -4,7 +4,7 @@
 namespace Delivery\Companies\Turtle;
 
 
-use Delivery\Item;
+use Delivery\ItemInterface;
 
 interface Interactor
 {
@@ -12,7 +12,7 @@ interface Interactor
     /**
      * @param string $addressA
      * @param string $addressB
-     * @param Item[] $items
+     * @param ItemInterface[] $items
      * @return Response
      *
      * @throws InteractorException

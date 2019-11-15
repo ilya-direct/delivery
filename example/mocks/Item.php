@@ -1,10 +1,9 @@
 <?php
 
+use Delivery\ItemInterface;
 
-namespace Delivery;
 
-
-class Item
+class Item implements ItemInterface
 {
     /** @var float kilograms */
     private $weight;
